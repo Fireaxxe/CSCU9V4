@@ -1,0 +1,110 @@
+Student ID:
+
+2520796 * NOTE: These are _not_ essay questions.
+ *       Short 2-3 line answers are perfectly sufficient in most cases.
+ */0.
+
+1.
+2.
+3.
+4.
+5.
+6.
+7.
+8.
+9.
+10.
+11.
+12.
+13.
+14.
+15.
+16.
+17.
+18.
+
+
+1.	How many colours does each format support?	
+		GIF: 8 bits per pixel for each image, up to 256 color chosen from the 24-bit RGB color space.
+		JPEG: 24 bits per pixel, 16 million colors. Grayscale JPEG: 8 bits per pixel. JPEGs do not support transparency or animation.
+		PNG: 24 bit color like JPEG, 16 million colors.
+		BMP: 32-bit color, or over 4 billion colors.
+
+2.	Which, if any, of the formats support animation? 
+		GIF, supports 8 bit color and 1-bit alpha.
+		GIFV
+		WEBM
+
+3.	What is the difference between lossy and lossless compression?
+		Lossless compression: every single bit of data that was originally in 
+        	the file remains after the file is uncompressed.
+       	 	Lossy compression: the file is reduced by permanently eliminating 
+        	certain information, especially redundant information.
+
+4.	Which of the formats are lossy compressed?
+		JPEG and GIFs are lossy. PNG and BMP are lossless
+
+5.	What happens, technically speaking, when a file is deleted on a FAT file system?	
+		When a file or directory is deleted under a FAT filesystem, the system modifies the filename's
+		first character within the file's directory entry to signal that the file has been deleted and that the diretory entry can be recycled.
+		The remainder of the directory entry information remains intact. 
+		The pointers are also changed to zero for each cluster used by the file.(the actual file information is never touched).
+
+6.	What can be done to ensure (with high probability) that deleted files cannot be recovered?
+		The most common techniques for properly sanitizing hard drives and ensure deleted files cannot be recovered are:
+		1)Physically destroying the drive, rendering it unusable
+		2)Degaussing the drive to randomize the magnetic domains most likely rendering the drive unusable in the process
+		3)Delete all data and then rewrite it several times over again so all the original bit and bytes are overwritten.(reformat hard drive)
+
+7.	What is stdint.h?
+		stdint.h is a header file in the C standard library introduced in the C99 standard library section 7.18 to allow programmers to write more
+		portable code by providing a set of typedefs that specify exact-width integer types, together with the defined minimum and maximum allowable 
+		values for each type, using macros .
+
+8.	What’s the point of using uint8_t, uint32_t, int32_t, and uint16_t in a program?
+		Those are unsigned and signed integer types from stdint.h. using properly-described types makes the code far less difficult and safer to port 
+		since you may not get any surprises while one system translates int as 16-bit and another as 32-bit. When you use them you get what you type.
+
+9.	How many bytes is a BYTE, a DWORD, a LONG, and a WORD, respectively?
+		BYTE: 1 byte (8 bits)
+		DWORD: 4 bytes (32 bits)
+		LONG: 4 bytes (32 bits)
+		WORD: 2 bytes (16 bits)
+
+10.	What (in ASCII, decimal, or hexadecimal) must the first two bytes of any BMP file be?
+	(Leading bytes used to identify file formats (with high probability) are generally called
+	"magic numbers.)"
+		The first two bytes of any BMP file must contain ASCII B then ASCII M 
+		For example the first two bytes specify the file is a bitmap with the words "BM", or the hex 0x4D42
+	
+11. 	What’s the difference between bfSize and biSize?
+		bfSize describes the entire file(BMP) size in bytes (14 bytes)
+		biSize is the size of bytes in the info header (BITMAPINFOHEADER(structure)). (40 bytes)
+
+12. 	What does it mean if biHeight is negative?
+		If biHeight is postive, the image is bottom up. 
+		If biHeight is negative, the image is bottom down. 
+
+13. 	What field in BITMAPINFOHEADER specifies the BMP’s color depth (i.e. bits per pixel)?
+		biBitCount specifies the BMP's color depth(the number of bits per pixel).
+
+14.	Why might fopen return NULL in copy.c:34?
+		fopen will return a NULL pointer if it cannot open the file. This can happen if there is not enough memory or the file cannot be found.
+
+15. 	Why is the third argument to fread always 1 in our code?
+		The fread's third argumend is always 1 because we iterating over every pixel.
+		(or) It determines the number of elements fread will read. We are reading one file so is always 1.
+
+16.	What value does copy.c:67 assign padding if bi.biWidth is 3?	
+		If (biWidth = 3)
+		int padding = (4 - (biWidth * sizeof(RGBTRIPLE)) % 4) %4 = 3.
+		This ensure that the numbers of byts in every row is a multiple of 4.
+
+17.	What does fseek do?
+		fseek function is used to set the file position indicator for the stream to a new position. It allows us to change the offset of a pointer.
+
+18. 	What is SEEK_CUR?
+		SEEK_CUR specifies that the offset provided is relative to the current file position.
+
+19.	Secret_Revealed 
+		Is Fozzie Bear from The Muppet Show!!!
